@@ -19,6 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   chatBotInput.addEventListener("keypress", (e) => {
     if (e.key === "Enter") sendMessage();
+    chatBotInput.innerHTML = "";
   });
 });
 
@@ -58,6 +59,7 @@ async function getBotResponse(userMessage) {
     });
 
     const data = await response.json();
+    console.log(data);
 
     if (!data.candidates || !data.candidates.length) {
       throw new Error("No response from Gemini API");
